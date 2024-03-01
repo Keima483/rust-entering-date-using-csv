@@ -8,28 +8,22 @@ pub struct Date {
 }
 
 impl Date {
-    
     #[allow(dead_code)]
     pub fn new(day: i16, month: i16, year: i16) -> Date {
-        return Date {
-            day,
-            month,
-            year
-        };
+        Date { day, month, year }
     }
 
     pub fn parse(date: &str) -> Date {
-        let items = 
-                date
-                .split("-")
-                .into_iter()
-                .map(|s| s.parse().expect("error in parsing date"))
-                .collect::<Vec<i16>>();
-        return Date {
+        let items = date
+            .split('-')
+            .into_iter()
+            .map(|s| s.parse().expect("error in parsing date"))
+            .collect::<Vec<i16>>();
+        Date {
             day: items[0],
             month: items[1],
-            year: items[2]
-        };
+            year: items[2],
+        }
     }
 }
 
@@ -38,3 +32,4 @@ impl fmt::Display for Date {
         write!(f, "{}/{}/{}", self.day, self.month, self.year)
     }
 }
+

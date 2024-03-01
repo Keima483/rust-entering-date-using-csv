@@ -6,8 +6,8 @@ use structs::{date::Date, student::Student};
 fn main() {
     let mut students = Vec::<Student>::new();
     let content = fs::read_to_string("data.csv").expect("Found and error");
-    for line in content.split("\n") {
-        let values = line.split(",").collect::<Vec<&str>>();
+    for line in content.split('\n') {
+        let values = line.split(',').collect::<Vec<&str>>();
         students.push(Student::new(
             values[0],
             values[1].parse().expect("Not able to parse the message"),
@@ -23,7 +23,7 @@ fn main() {
 
 fn get_marks(marks_str: &str) -> HashMap<String, f32> {
     let marks = marks_str
-        .split("|")
+        .split('|')
         .into_iter()
         .map(|m| m.parse::<f32>().expect("Error parsing marks"))
         .collect::<Vec<f32>>();
